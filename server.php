@@ -19,38 +19,38 @@
     function getGoodsByTitle($name){
         foreach($this->goods as $key => $value){
             if($this->goods[$key]['title'] == $name){
-                $result[] = $value;
+            	return true;
             }
         }    
-        return $result;    
+        return false;  
     }
 
     function getGoodsByManufacturer($manufacturer){
         foreach($this->goods as $key => $value){
             if($this->goods[$key]['manufacturer'] == $manufacturer){
-                $result[] = $value;
+                return true;
             }
         }    
-        return $result;
+         return false;  
     }
 
     function getGoodsByPrice($price){
         foreach($this->goods as $key => $value){
             if($this->goods[$key]['price'] == $price){
-                $result[] = $value;
+                return true;
             }
         }    
-        return $result;
+        return false;
         
     }
 
     function getGoodsByColor($color){
         foreach($this->goods as $key => $value){
             if($this->goods[$key]['color'] == $color){
-                $result[] = $value;
+                return true;
             }
         }    
-        return $result;
+        return false;
         
     }
  }
@@ -60,31 +60,10 @@
 // Отключение кеширования wsdl-документа
 ini_set("soap.wsdl_cache_enabled", "0");
 // Создание SOAP-сервера
-$server = new SoapServer("http://localhost/soap/goods.wsdl");
+$server = new SoapServer("https://soap-server-polubiakin.c9users.io/goods.wsdl");
 // Регистрация класса
 $server->setClass("Goods");
 // Запуск сервера
 $server->handle();
 
 
-//  $test = new Goods;
-// //  print_r($test->getGoodsByTitle('Lenovo P2'));
-//  if($test->getGoodsByTitle('Lenovo P2')){
-//      echo 'есть в наличии';
-//  } else {
-//      echo 'нет в наличии';
-//  }
-
-//  echo "<br>";
-
-//  print_r($test->getGoodsByManufacturer('Xiaomi'));
-
-//  echo "<br>";
-
-//  print_r($test->getGoodsByPrice(5e4));
-
-//  echo "<br>";
-
-//  print_r($test->getGoodsByColor('black'));
-
-phpinfo();
