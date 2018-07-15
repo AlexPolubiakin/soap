@@ -1,0 +1,90 @@
+<?xml version ='1.0' encoding ='UTF-8' ?> 
+<definitions name='Goods' 
+		targetNamespace='https://soap-server-polubiakin.c9users.io/' 
+		xmlns:tns='https://soap-server-polubiakin.c9users.io/' 
+		xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+		xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+		xmlns:soapenc='http://schemas.xmlsoap.org/soap/encoding/' 
+		xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' 
+		xmlns='http://schemas.xmlsoap.org/wsdl/'> 
+
+	<message name='getGoodsByTitleRequest'> 
+		<part name='title' type='xsd:string'/> 
+	</message> 
+	<message name='getGoodsByTitleResponse'> 
+		<part name='result' type='xsd:boolean'/> 
+	</message> 
+
+
+	<message name='getGoodsByManufacturerRequest'> 
+		<part name='manufacturer' type='xsd:string'/> 
+	</message>
+	<message name='getGoodsByManufacturerResponse'> 
+		<part name='result' type='xsd:boolean'/> 
+	</message>
+
+
+	<message name='getGoodsByPriceRequest'> 
+		<part name='price' type='xsd:string'/> 
+	</message>
+	<message name='getGoodsByPriceResponse'> 
+		<part name='result' type='xsd:boolean'/> 
+	</message>
+
+
+	<message name='getGoodsByColorRequest'> 
+		<part name='color' type='xsd:string'/> 
+	</message>
+	<message name='getGoodsByColorResponse'> 
+		<part name='result' type='xsd:boolean'/> 
+	</message>
+
+	<portType name='GoodsType'> 
+		<operation name='getGoodsByTitle'> 
+			<input message='tns:getGoodsByTitleRequest'/> 
+			<output message='tns:getGoodsByTitleResponse'/> 
+		</operation>
+		<operation name='getGoodsByManufacturer'> 
+			<input message='tns:getGoodsByManufacturerRequest'/> 
+			<output message='tns:getGoodsByManufacturerResponse'/> 
+		</operation>
+		<operation name='getGoodsByPrice'> 
+			<input message='tns:getGoodsByPriceRequest'/> 
+			<output message='tns:getGoodsByPriceResponse'/> 
+		</operation>
+		<operation name='getGoodsByColor'> 
+			<input message='tns:getGoodsByColorRequest'/> 
+			<output message='tns:getGoodsByColorResponse'/> 
+		</operation>
+
+	</portType>
+
+	<binding name='GoodsBinding' type='tns:GoodsType'> 
+		<soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http'/> 
+		<operation name='getGoodsByTitle' /> 
+		<operation name='getGoodsByManufacturer' />
+		<operation name='getGoodsByPrice' />
+		<operation name='getGoodsByColor' />  
+	</binding> 
+
+	<service name='GoodsService'> 
+		<port name='GoodsType' binding='GoodsBinding'> 
+			<soap:address location='https://soap-server-polubiakin.c9users.io/server.php'/> 
+		</port> 
+	</service> 
+</definitions>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
